@@ -1,0 +1,47 @@
+server:
+    port: 8888
+    context-path:
+
+
+
+spring:
+      datasource:
+          name: test
+          url: jdbc:mysql://rdsxshare.mysql.rds.aliyuncs.com:3306/xxcb?useUnicode=true&characterEncoding=utf-8
+          username: xshare
+          password: Jszhaomi123
+          # 使用druid数据源
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: com.mysql.jdbc.Driver
+          druid:
+              filters: wall,stat
+              max-active: 50
+              initial-size: 10
+              max-wait: 60000
+              minIdle: 1
+              time-between-eviction-runs-millis: 60000
+              min-evictableIdle-time-millis: 300000
+              validation-query: select 'x'
+              test-whileIdle: true
+              test-on-borrow: false
+              test-on-return: false
+              pool-prepared-statements: true
+              max-open-prepared-statements: 20
+              remove-abandoned: true
+              remove-abandoned-timeout: 1800
+              log-abandoned: true
+  #    # REDIS (RedisProperties)
+      redis:
+        database: 0
+        host: 192.168.99.148
+        port: 6379
+        password:
+        timeout: 0
+        pool:
+          max-idle: 100
+          min-idle:  1
+          max-active: 1000
+          max-wait: -1
+
+      thymeleaf:
+        cache: false
