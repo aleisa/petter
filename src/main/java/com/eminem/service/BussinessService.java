@@ -18,6 +18,10 @@ public class BussinessService {
     @Autowired
     BussinessMapper bussinessMapper;
 
+    /**
+     * 测试而已
+     * @return
+     */
     public List<Map<String,Object>> selectAll(){
         Map<String,String> params= new HashMap<>();
         List<Map<String,Object>> all=new ArrayList<Map<String, Object>>();
