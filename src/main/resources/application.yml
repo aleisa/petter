@@ -5,6 +5,11 @@ server:
 
 
 spring:
+      data:
+          mongodb:
+            host: 192.168.199.103
+            port: 27017
+            database: peter
       datasource:
           name: test
           url: jdbc:mysql://rdsxshare.mysql.rds.aliyuncs.com:3306/xxcb?useUnicode=true&characterEncoding=utf-8
@@ -30,10 +35,12 @@ spring:
               remove-abandoned: true
               remove-abandoned-timeout: 1800
               log-abandoned: true
+
+
   #    # REDIS (RedisProperties)
       redis:
         database: 0
-        host: 192.168.99.148
+        host: 192.168.199.103
         port: 6379
         password:
         timeout: 0
