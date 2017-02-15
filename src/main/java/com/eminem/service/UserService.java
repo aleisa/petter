@@ -5,6 +5,7 @@ import com.eminem.service.intf.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,8 +24,8 @@ public class UserService{
         return user;
     }
 
-    public User findUser(Map<String,Object> resultMap){
-
-        repository.findOne();
+    public List<User> findUser(Map<String,Object> resultMap){
+       List<User> users = repository.findAll();
+        return users;
     }
 }
