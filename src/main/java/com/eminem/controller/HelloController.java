@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/hello")
 public class HelloController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping
     public String hello(){
         List<Integer> users= Lists.newArrayList(1,2,3,4);
