@@ -24,8 +24,15 @@ public class UserService{
         return user;
     }
 
-    public List<User> findUser(Map<String,Object> resultMap){
-       List<User> users = repository.findAll();
-        return users;
+    public User findById(String id){
+       User user = repository.findOne(id);
+        return user;
     }
+
+    public User findUserByName(String name,String password){
+        User user = repository.findUserByName(name,password);
+        return user;
+    }
+
+
 }
