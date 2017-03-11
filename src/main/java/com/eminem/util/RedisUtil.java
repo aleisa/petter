@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 @SuppressWarnings("unchecked")
 @Component
-public class RedisUtil {
+public  class RedisUtil {
     @SuppressWarnings("rawtypes")
     @Autowired
     private RedisTemplate redisTemplate;
@@ -87,6 +88,8 @@ public class RedisUtil {
         }
         return result;
     }
+
+
     /**
      * 写入缓存
      *
@@ -105,5 +108,15 @@ public class RedisUtil {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public boolean leftPush(String topic,Object event){
+        try {
+            redisTemplate.opsForList().leftPush(topic,event);
+        }catch (Exception e ){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

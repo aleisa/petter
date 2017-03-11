@@ -2,7 +2,9 @@ package com.eminem.controller;
 
 import com.eminem.entity.User;
 import com.eminem.service.BussinessService;
+import com.eminem.service.RedisMQService;
 import com.eminem.service.UserService;
+import com.eminem.util.RedisUtil;
 import io.swagger.annotations.*;
 import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,8 @@ public class BussinessController {
     BussinessService bussinessService;
     @Autowired
     UserService userService;
-
+    @Autowired
+    RedisMQService redisMQService;
 
     @ApiOperation(value="创建用户", notes="根据User对象创建用户")
     @ApiImplicitParams({@ApiImplicitParam(paramType="query",name="id",dataType = "String",required = true,value = "用户的ID",defaultValue = "1" ),
@@ -62,8 +65,13 @@ public class BussinessController {
        User user = userService.findUserByName(username ,password);
         return  user;
     }
-
-
+    @RequestMapping(value = "/redis" , method = RequestMethod.GET)
+    public void putRedis(){
+        User user = new User();
+        user.setPassword("qwe");
+        user.setUsername("kkk");
+        redisMQService.send("ADDUSER",user);
+    }
 
 
 }
