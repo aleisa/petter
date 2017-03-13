@@ -27,8 +27,6 @@ public class BussinessController {
     BussinessService bussinessService;
     @Autowired
     UserService userService;
-
-
     @ApiOperation(value="创建用户", notes="根据User对象创建用户")
     @ApiImplicitParams({@ApiImplicitParam(paramType="query",name="id",dataType = "String",required = true,value = "用户的ID",defaultValue = "1" ),
             @ApiImplicitParam(paramType="query",name="username",dataType = "String",required = true,value = "用户的username",defaultValue = "1" ),
