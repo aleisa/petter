@@ -3,6 +3,7 @@ package com.eminem.controller;
 import com.eminem.entity.User;
 import com.eminem.service.BussinessService;
 import com.eminem.service.UserService;
+import com.eminem.service.websocket.WebsocketServer;
 import io.swagger.annotations.*;
 import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class BussinessController {
     BussinessService bussinessService;
     @Autowired
     UserService userService;
+    @Autowired
+    WebsocketServer websocketServer;
     @ApiOperation(value="创建用户", notes="根据User对象创建用户")
     @ApiImplicitParams({@ApiImplicitParam(paramType="query",name="id",dataType = "String",required = true,value = "用户的ID",defaultValue = "1" ),
             @ApiImplicitParam(paramType="query",name="username",dataType = "String",required = true,value = "用户的username",defaultValue = "1" ),
