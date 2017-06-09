@@ -1,5 +1,6 @@
 package com.eminem.service.websocket;
 
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -34,7 +35,10 @@ public class WebsocketServer {
             try{
                 //创建选择器
                 this.selector = SelectorProvider.provider().openSelector();
-
+                //打开第一个通道
+                serverSocketChannel1.configureBlocking(false);
+                //绑定套接字
+                serverSocketChannel1.socket().bind(new InetSocketAddress(""));
             }catch (Exception e){
 
             }
